@@ -32,7 +32,8 @@ def send_email(my_email):
     msg.attach(MIMEText(body, 'plain'))
 
     # open the file to be sent
-    filename = my_email.filepath
+    filename = my_email.filepath.rpartition('\\')[-1]
+
     attachment = open(my_email.filepath, "rb")
 
     # instance of MIMEBase and named as p
@@ -46,14 +47,14 @@ def send_email(my_email):
 
     p.add_header('Content-Disposition', "attachment; filename= %s" % filename)
 
-    # attach the instance 'p' to instance 'msg'
+    #print('# attach the instance 'p' to instance 'msg')
     msg.attach(p)
 
     # creates SMTP session
     s = smtplib.SMTP('smtp.gmail.com', 587)
 
     # start TLS for security
-    s.ehlo()
+    #s.ehlo()
     s.starttls()
 
     # Authentication
