@@ -13,7 +13,6 @@ def tardir(path, file_name):
 def main(tarf_path):
     file_name = tarf_path+'\\'+datetime.datetime.now().strftime("%Y%m%d-%H%M%S")+'.tar'
     tardir(tarf_path, file_name)
-    print(type(file_name))
     return file_name
 
 if __name__ == '__main':
